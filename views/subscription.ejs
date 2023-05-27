@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriptions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/app.css">
+    <link id="theme-sheet" rel="stylesheet" href="/css/core.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/blue.css">
+</head>
+<body class="class="is-theme-core"">
+    <div id="main-hero" class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="
+              column
+              is-6 is-offset-3 is-header-caption
+              has-text-centered
+              pt-60
+            ">
+            <%if (customer ) { %>
+                <p class="lead">Hi <%-customer.username %></p> <%  %>
+                <%if (customer.plan=="none" ) { %>
+                    <h1 class="title main-title">Check out our Plans.</h1>
+                    <h2 class="subtitle is-5 light-text">Pick the right plan for you.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="section section-light-grey is-skewed-sm clean-pricing">
+        <div class="container has-text-centered is-reverse-skewed-sm">
+            <!-- Pricing tables -->
+            <div class="columns is-vcentered giant-pb">
+                <div class="column is-5 has-text-left">
+                    <!-- Period selector -->
+                    <div class="period-select">
+                        <span class="clean-text is-active">Monthly</span>
+                        <span class="clean-text">Annualy</span>
+                    </div>
+                    <h2 class="title theme clean-text pb-10 pt-10 is-2 no-margin">
+                        Choose a plan.
+                    </h2>
+                    <!-- Plan type switcher -->
+
+                    <div class="subtitle is-6 mt-20">
+                        Plaintalk has the answer to your needs
+                    </div>
+                    <br />
+                </div>
+                <div class="column is-8">
+                    <!-- Freelance pricing -->
+                    <div id="freelance-pricing" class="side-pricing">
+                        <div class="columns is-vcentered">
+                            <div class="column">
+                                <!-- Pricing table features -->
+                                <div class="pricing-card animated preFadeInLeft fadeInLeft">
+                                    <div class="popular"><i class="im im-icon-Crown-2"></i></div>
+                                    <div class="inner">
+                                        <h6 class="plan-name">Basic</h6>
+                                        <div class="plan-price">
+                                            <small class="currency">$</small>
+                                            <div class="month-price animated preFadeInUp fadeInUp">
+                                                <span>0</span>
+                                                <small>/ month</small>
+                                            </div>
+                                            <div class="year-price animated preFadeInUp fadeInUp is-hidden">
+                                                <span>0</span>
+                                                <small>/ year</small>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li><b>3</b> Requests per month</li>
+                                            <li><b>GPT-3</b> Full Power</li>
+                                        </ul>
+                                        <a href="#" class="button button-cta primary-btn raised">CURRENT PLAN</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <!-- Pricing table transparent -->
+                                <div class="
+                    pricing-card
+                    transparent
+                    animated
+                    preFadeInLeft
+                    fadeInLeft
+                    delay-1
+                  ">
+                                    <div class="inner">
+                                        <h6 class="plan-name">Pro</h6>
+                                        <div class="plan-price">
+                                            <small class="currency">$</small>
+                                            <div class="month-price animated preFadeInUp fadeInUp">
+                                                <span>10</span>
+                                                <small>/ month</small>
+                                            </div>
+                                            <div class="year-price animated preFadeInUp fadeInUp is-hidden">
+                                                <span>120</span>
+                                                <small>/ year</small>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li><b>250</b> Requests per month</li>
+                                            <li><b>GPT-3</b> Full Power</li>
+                                        </ul>
+                                        <a class="button button-cta primary-btn btn-outlined is-bold" onclick="checkout()">Get Started</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <% } else if(customer.plan === "pro"){%> 
+        
+      
+    
+        <div class="section section-light-grey is-skewed-sm clean-pricing">
+            <div class="container has-text-centered is-reverse-skewed-sm">
+                <!-- Pricing tables -->
+                <div class="columns is-vcentered giant-pb">
+                    <div class="column is-5 has-text-left">
+                       
+                        <h2 class="title theme clean-text pb-10 pt-10 is-2 no-margin">
+                            Manage your plan
+                        </h2>
+                        
+                        
+                    </div>
+                    <div class="column is-8">
+                        <!-- Freelance pricing -->
+                        <div id="freelance-pricing" class="side-pricing">
+                            <div class="columns is-vcentered">
+                                <div class="column">
+                                    <!-- Pricing table features -->
+                                    <div class="pricing-card animated preFadeInLeft fadeInLeft">
+                                        <div class="popular"><i class="im im-icon-Crown-2"></i></div>
+                                        <div class="inner">
+                                            <h6 class="plan-name">Pro</h6>
+                                            <div class="plan-price">
+                                                <small class="currency">$</small>
+                                                <div class="month-price animated preFadeInUp fadeInUp">
+                                                    <span>10</span>
+                                                    <small>/ month</small>
+                                                </div>
+                                                <div class="year-price animated preFadeInUp fadeInUp is-hidden">
+                                                    <span>120</span>
+                                                    <small>/ year</small>
+                                                </div>
+                                            </div>
+                                            <ul>
+                                                <li><b>250</b> Requests per month</li>
+                                                <li><b>GPT-3</b> Full Power</li>
+                                            </ul>
+                                            <a onclick="billing()" class="button button-cta primary-btn raised">Manage Plan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <!-- Pricing table transparent -->
+                                    <div class="
+                        pricing-card
+                        transparent
+                        animated
+                        preFadeInLeft
+                        fadeInLeft
+                        delay-1
+                      ">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }} %>
+
+
+    <script src="/js/app.js"></script>
+    <script src="/js/core.js"></script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+    <script>
+      var customer = <%- JSON.stringify(customer) %>;
+      console.log(customer);
+    </script>
+    <script src="./js/account.js"></script>
+</body>
+</html>

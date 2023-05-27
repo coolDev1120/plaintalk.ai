@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plaintalk :: Account</title>
+    <link rel="stylesheet" href="/css/bot.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/loading.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <!-- Latest compiled CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <!-- toastr -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</head>
+
+<body>
+    <header style="display: none;">
+        <a class="logo" href="/"><img id="logoImg" src="/images/plainwhite.png" alt="logo"></a>
+        <nav>
+            <ul class="nav__links">
+                <li>
+                    <p>Hi there <strong style="color: hsl(215deg 100% 48%);"><%= customer.username %></strong></p>
+                <li>
+                <li>
+                    <p>You currently have <strong style="color: hsl(215deg 100% 48%);"><%= customer.credits %>
+                        </strong>Credits as of <%= 
+                       new Date().toLocaleString('en-US',  {month: 'short', day: 'numeric', hour: 'numeric'}) %>
+                    </p>
+                </li>
+                <% if(customer.plan === "pro") {%>
+                <li style="color: white;">Plan renews on <%= customer.endDate  %></li>
+                <% } %>
+            </ul>
+        </nav>
+
+        <div id="buttonDiv">
+            <a class="cta" href="subscriptions"><% if (customer.plan === "none") {%> Buy Subscription <% } %>
+                <% if(customer.plan === "pro") {%> Manage Subscriptions <% } %></a>
+            <a class="cta" href="/logout">Logout</a>
+            <p class="menu cta">Menu</p>
+        </div>
+    </header>
+    <div class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a href="/subscriptions">Subscriptions</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="row" style="margin: 0px">
+        <div class="col-sm-3 sidebar" style="display: none;">
+            <div style="text-align: center; padding: 20px 0px 0px 10px;" >
+                <a class="back-top btn btn-square btn-sm btn-ghost" href="/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"></path></svg></a>
+                <a class="logo" href="/"><img id="logoImg" src="/img/logos/logo/plaintalk.png" alt="logo"></a>
+                <button onclick="removeall()" type="button" class="remove-top btn btn-square btn-sm btn-ghost"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linejoin="round" stroke-width="32" d="M408 64H104a56.16 56.16 0 00-56 56v192a56.16 56.16 0 0056 56h40v80l93.72-78.14a8 8 0 015.13-1.86H408a56.16 56.16 0 0056-56V120a56.16 56.16 0 00-56-56z"></path></svg></button>
+            </div>
+            <div class="mt-3 scrollbar" id="question">
+            </div>
+            <div class="input-group chatbox">
+                <input id="input" type="text" class="form-control" placeholder="Type your message here">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-primary"><i class="fa fa-send"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div style="text-align: center; padding: 20px 0px 0px 10px;" >
+                <a class="back-top btn btn-square btn-sm btn-ghost" href="/"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"></path></svg></a>
+                <a class="logo" href="/"><img id="logoImg" src="/img/logos/logo/plaintalk.png" alt="logo"></a>
+            </div>
+        </div>
+        <div class="col-sm-12" style="padding-right: 0px; padding-left: 0px; border-left: 1px solid #ccc;">
+            <div style="padding-left: 7%; display: flex; padding-top: 25px;">
+                <svg style="font-size: 30px; color: #007bff;" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="text-2xl text-purple-300 mr-3" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linejoin="round" stroke-width="32" d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z"></path><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 56v120a32 32 0 0032 32h120m-232 80h160m-160 80h160"></path></svg>
+                <span style="font-size: 20px;">My document</span>
+                <div style="color: #afafaf; margin-left: auto; font-size: 20px; padding-right: 8%; text-align: center;">
+                    <div style="font-size: 12px;"><%= customer.credits %> credits left</div>
+                    <a style="font-size: 12px;" href="subscriptions"><% if (customer.plan === "none") {%> Buy Subscription <% } %>
+                        <% if(customer.plan === "pro") {%> Manage Subscriptions <% } %></a>
+                </div>
+            </div>
+            <form method="post">
+                <div id="mytextarea"></div>
+            </form>
+        </div>
+    </div>
+    <button style="display: none !important;" class="sidebar-toggle lg:hidden fixed z-30 text-3xl text-white top-1/2 translate-y-1/2 bg-primary w-12 h-12 rounded-full shadow-sm flex items-center -translate-x-1/2 left-0 justify-end"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"></path></svg></button>
+
+    <!-- Loading -->
+    <div id="loading-overlay"
+        style="display: none; position: fixed; top: 0; left: 0; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="spinner1"
+                style="border: 8px solid #f3f3f3; border-top: 8px solid #3498db; border-radius: 50%; width: 50px; height: 50px; animation: spin 2s linear infinite;">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.tiny.cloud/1/zf7ceif30k6xjrbyv82crqzwrehoyz6uvirnf8oo87zbp96q/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+    <script>
+        var sidebar = $('.sidebar');
+  var sidebarToggle = $('.sidebar-toggle');
+  sidebarToggle.on('click', function() {
+    sidebar.toggleClass('active');
+    sidebarToggle.toggleClass('active1');
+  });
+
+        var copy_text = '';
+        var questionHistory = <%- JSON.stringify(question) %>;
+        var editor = tinymce.get('mytextarea');
+        var mainID = 1;
+
+        tinymce.init({
+            selector: "#mytextarea",
+            toolbar_sticky: true,
+            toolbar: "undo redo | bold italic underline | fontselect | fontsizeselect | forecolor backcolor | simple | Clarify",
+            mobile: {
+                menubar: true,
+                toolbar: "undo redo | simple | Clarify | bold italic underline | fontselect | fontsizeselect | forecolor backcolor",
+            },
+            content_style: `
+            body { line-height: 1.75rem; font-size: 1.25rem; font-family: ui-serif,Georgia,Cambria,Times New Roman,Times,serif; width: 85%; margin: auto;} `,
+            placeholder: "Start writing your thing…",
+            setup: function (editor) {
+                editor.ui.registry.addButton("simple", {
+                    text: "Standard",
+                    onAction: function () {
+                        var selectedText = tinymce.activeEditor.selection.getContent();
+
+                        if (selectedText.length == 0) {
+                            toastr.info('Please select text');
+                        } else {
+                            document.getElementById("loading-overlay").style.display = "block";
+                            fetch("/simplytext", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                        prompt: selectedText
+                                    }),
+                                })
+                                .then(async (response) => await response.json())
+                                .then((data) => {
+                                    tinyMCE.activeEditor.selection.setContent(data.message
+                                        .trim());
+                                    tinyMCE.activeEditor.save();
+                                    document.getElementById("loading-overlay").style
+                                        .display = "none";
+                                })
+                                .catch((e) => {
+                                    console.log(e.message);
+                                });
+                        }
+                    },
+                });
+
+                editor.ui.registry.addButton("clarify", {
+                    text: "Elementary",
+                    onAction: function () {
+                        var selectedText = tinymce.activeEditor.selection.getContent();
+
+                        if (selectedText.length == 0) {
+                            toastr.info('Please select text');
+                        } else {
+                            fetch("/clarifytext", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                        prompt: selectedText
+                                    }),
+                                })
+                                .then(async (response) => await response.json())
+                                .then((data) => {
+                                    tinyMCE.activeEditor.selection.setContent(data.message
+                                        .trim());
+                                    tinyMCE.activeEditor.save();
+                                    document.getElementById("loading-overlay").style
+                                        .display = "none";
+                                })
+                                .catch((e) => {
+                                    console.log(e.message);
+                                });
+                        }
+                    }
+                });
+
+                editor.on('change', function () {
+                    var memo = editor.getContent();
+                    fetch("/memoChange", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                memo: memo,
+                                mainID: mainID
+                            }),
+                        })
+                        .then(async (response) => await response.json())
+                        .then((data) => {
+                            console.log(data)
+                        });
+                });
+            }
+        });
+
+
+        setTimeout(() => {
+            var editor = tinymce.get('mytextarea');
+            var memo = <%- JSON.stringify(memo[0].memo) %>;
+            editor.setContent(memo);
+            console.log(memo)
+        }, 1000);
+
+
+        function copyToClipboard(text) {
+            var editor = tinymce.get('mytextarea');
+            var content = editor.getContent();
+            var newContent = content + text;
+            editor.setContent(newContent);
+        }
+
+        function copyText(text) {
+            var tempTextarea = document.createElement("textarea");
+            tempTextarea.value = text;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextarea);
+        }
+
+        questionHistory.map((value) => {
+            $("#question").append(
+                `<div class="chat-bubble">
+                    <img style="width: 30px;" src="/images/man.png" alt="User Avatar"
+                        class="avatar rounded-circle float-left mr-2">
+                </span>
+                <div class="chat-message">
+                    <p>${value.question}</p>
+                </div>
+            </div>`);
+
+            $("#question").append(
+                '<div class="chat-bubble">' +
+                '<img style="width: 30px;" src="/images/chatbot.png" alt="User Avatar" class="avatar rounded-circle float-left mr-2">' +
+                '</span>' +
+                '<div class="chat-message">' +
+                '<p class="point answer" onclick="copyToClipboard(\`' + value.answer.trim() +
+                '\`)">' + value.answer.trim() + '</p>' +
+                '<a onclick="copyText(\`' + value.answer.trim() +
+                '\`)" class="clipboard" href="#">Click to Clipboard</a>' +
+                '</div>' +
+                '</div>'
+            );
+        })
+
+        function scrolltoBottom() {
+            const $element = $('.scrollbar');
+            $element.scrollTop($element[0].scrollHeight);
+        }
+        scrolltoBottom();
+
+        document.getElementById("input").addEventListener("keyup", function (event) {
+            event.preventDefault();
+            var prompt = $("#input").val();
+            if (event.keyCode === 13) {
+                $("#question").append(
+                    `<div class="chat-bubble">
+                        <img style="width: 30px;" src="/images/man.png" alt="User Avatar"
+                            class="avatar rounded-circle float-left mr-2">
+                    </span>
+                    <div class="chat-message">
+                        <p>${prompt}</p>
+                    </div>
+                </div>`)
+                $("#input").val('');
+                $("#question").append(
+                    `<div class="chat-bubble remove_loading">
+                        <img style="width: 30px;" src="/images/chatbot.png" alt="User Avatar"
+                            class="avatar rounded-circle float-left mr-2">
+                    </span>
+                    <div class="chat-message">
+                        <div class="spinner"></div>
+                    </div>
+                </div>`)
+
+                scrolltoBottom();
+
+                fetch("/el5", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            prompt
+                        }),
+                    })
+                    .then(async (response) => await response.json())
+                    .then((data) => {
+                        $("#question").append(
+                            '<div class="chat-bubble">' +
+                            '<img style="width: 30px;" src="/images/chatbot.png" alt="User Avatar" class="avatar rounded-circle float-left mr-2">' +
+                            '</span>' +
+                            '<div class="chat-message">' +
+                            '<p class="point answer" onclick="copyToClipboard(\`' + data.message
+                            .trim() +
+                            '\`)">' + data.message.trim() + '</p>' +
+                            '<a onclick="copyText(\`' + data.message.trim() +
+                            '\`)" class="clipboard" href="#">Click to Clipboard</a>' +
+                            '</div>' +
+                            '</div>'
+                        );
+                        $(".remove_loading").remove()
+                        scrolltoBottom();
+                    })
+                    .catch((e) => {
+                        console.log(e.message);
+                    });
+            }
+        });
+
+        function removeall() {
+            fetch("/removehisttory", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    mainID: 1
+                }),
+            })
+            $("#question").html('')
+        }
+
+        function convertText(selectedText) {
+            let newSentence = selectedText.replace(/\b\w/g, (c) => c.toUpperCase());
+            return newSentence;
+        }
+    </script>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

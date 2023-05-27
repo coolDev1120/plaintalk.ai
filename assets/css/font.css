@@ -1,0 +1,140 @@
+/* @import url('https://fonts.cdnfonts.com/css/sf-ui-display'); */
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap'); */
+/* @import url('https://fonts.cdnfonts.com/css/lexend-deca'); */
+
+@font-face {
+    font-family: myFont;
+    src: url('./f963670c6017484a.p.woff2');
+}
+
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+span,
+blockquote,
+a,
+div,
+textarea,
+ul,
+li {
+    /* font-family: 'SF UI Display', sans-serif !important; */
+    /* font-family: 'PT Serif', serif !important; */
+    font-family: myFont, sans-serif !important;
+
+}
+
+.text-lg {
+    font-size: 1.125rem !important;
+    line-height: 1.75rem !;
+}
+
+.text-sm {
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mt-16 {
+    margin-top: 4rem;
+}
+
+.leading-7 {
+    line-height: 1.75rem;
+}
+
+.title-color {
+    color: #0f172a !important;
+}
+
+.desctiption-color {
+    color: rgb(51 65 85) !important;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+
+.fqa_bg {
+    background: url(https://monkeywriter.me/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbg-faq.55d2e36a.jpg&w=1920&q=75);
+    color: transparent;
+    background-size: cover;
+    filter: hue-rotate(355deg);
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-translate-x: -30%;
+}
+
+.footer-light-medium {
+    background: transparent !important;
+}
+
+.feature_gradient {
+    background-image: radial-gradient(circle 273px at 9.7% 50.7%, rgba(86, 204, 242, 1) 0%, rgb(15 124 255) 90%);
+    color: #fff !important;
+}
+
+.feature_gradient h2,
+.feature_gradient h4 {
+    color: #fff !important;
+}
+.feature_warpper {
+    margin: auto;
+    margin-top: 5rem;
+    width: 90%;
+    border: 1px solid #ffffff29;
+    border-radius: 5px;
+    padding: 0 10%;
+    background-color: hsla(0,0%,100%,.1);
+}
+.feature1 {
+    font-size: 18px;
+    text-align: center;
+}
+.check_icon {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 20px;
+}
+.feature1 svg {
+    width: 55px;
+    fill: #0f7cff;
+}
+.card-box {
+    transition: 0.6s;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.12);
+    padding: 35px;
+    border-radius: 12px;
+    margin-top: 20px;
+    transition: 0.6s;
+    position: relative;
+    top: 0;
+}
+.card-box:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.xl-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+.card-box p {
+    font-size: 17px;
+}
+.benifits_des {
+    font-size: 17px !important;
+    color: #334155 !important;
+    text-align: center;
+    line-height: 1.75rem;
+}

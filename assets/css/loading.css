@@ -1,0 +1,88 @@
+.spinner {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: #ec5840;
+  border-radius: 100%;
+  opacity: 0.7;
+}
+
+.spinner:before {
+  content: "...";
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  color: #EEEEEE;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 1);
+}
+
+.spinner:after {
+  content: "";
+  display: block;
+  z-index: 0;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: linear-gradient(420deg, transparent 50%, #CECECE 50%), linear-gradient(90deg, #CECECE 50%, transparent 50%);
+  -webkit-animation: spinner 2s infinite linear;
+  animation: spinner 2s infinite linear;
+}
+
+@-webkit-keyframes spinner {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.scrollbar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+.scrollbar::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, rgb(122,153,217)),
+									   color-stop(0.72, rgb(73,125,189)),
+									   color-stop(0.86, rgb(28,58,148)));
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
