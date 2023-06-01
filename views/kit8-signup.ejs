@@ -12,7 +12,7 @@
 
     <!-- Google Tag Manager -->
     <script>
-        (function(w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -39,7 +39,8 @@
 
 <body class="is-theme-core">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZR6B4P" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZR6B4P" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <div class="pageloader"></div>
@@ -62,77 +63,80 @@
                         <h3>Create an account</h3>
                         <h4>
                             <% if(typeof error !== 'undefined' && error.length) { %>
-                                <strong style="color:red;">  <%= error %></strong>
-                                   <% } else {%> Don't worry, it's super fast.<% } %></h4>
+                            <strong style="color:red;"> <%= error %></strong>
+                            <% } else {%> Don't worry, it's super fast.<% } %></h4>
                     </div>
-                    <form  action="/register" method="post">
-                    <div class="form-inner">
-                        <div class="field">
-                            <div class="control has-icons-left">
-                                <input name="email" type="email" class="input is-rounded is-primary-focus" placeholder="Email address" required />
-                                <div class="icon is-nedium is-left">
-                                    <i class="sl sl-icon-envelope-open"></i>
+                    <form action="/register" method="post">
+                        <div class="form-inner">
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input name="email" type="email" class="input is-rounded is-primary-focus"
+                                        placeholder="Email address" required />
+                                    <div class="icon is-nedium is-left">
+                                        <i class="sl sl-icon-envelope-open"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="field">
-                            <div class="control has-icons-left">
-                                <input name="username" type="text" class="input is-rounded is-primary-focus" placeholder="Username" required />
-                                <div class="icon is-nedium is-left">
-                                    <i class="sl sl-icon-user"></i>
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input name="username" type="text" class="input is-rounded is-primary-focus"
+                                        placeholder="Username" required />
+                                    <div class="icon is-nedium is-left">
+                                        <i class="sl sl-icon-user"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="field">
-                            <div class="control has-icons-left">
-                                <input name="password" type="password" class="input is-rounded is-primary-focus" placeholder="Password" required />
-                                <div class="icon is-nedium is-left">
-                                    <i class="sl sl-icon-lock"></i>
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input name="password" type="password" class="input is-rounded is-primary-focus"
+                                        placeholder="Password" required />
+                                    <div class="icon is-nedium is-left">
+                                        <i class="sl sl-icon-lock"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                        <div class="field">
-                            <div class="control has-icons-left">
-                                <button type="submit" class="button is-fullwidth is-rounded primary-btn raised">
-                                    Sign Up
-                                </button>
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <button type="submit" class="button is-fullwidth is-rounded primary-btn raised">
+                                        Sign Up
+                                    </button>
+                                </div>
                             </div>
-                        </div>
                     </form>
 
-                        <div class="form-divider">
-                            <div class="divider-circle">
-                                <i class="material-icons">keyboard_arrow_down</i>
-                            </div>
+                    <div class="form-divider">
+                        <div class="divider-circle">
+                            <i class="material-icons">keyboard_arrow_down</i>
                         </div>
+                    </div>
 
-                        <div class="social-login">
-                            <h4>Or sign up with:</h4>
-                            <div class="login-buttons">
-                                <div class="button-wrap">
-                                    <a href="/auth/google" class="button-inner">
-                                        <i class="fa fa-google"></i>
-                                    </a>
-                                </div>
-                                <div  class="button-wrap">
-                                    <a href="/auth/microsoft" class="button-inner">
-                                        <i class="fa fa-windows"></i>
-                                    </a>
-                                </div>
-                                
+                    <div class="social-login">
+                        <h4>Or sign up with:</h4>
+                        <div class="login-buttons">
+                            <div class="button-wrap">
+                                <a href="/auth/google" class="button-inner">
+                                    <i class="fa fa-google"></i>
+                                </a>
                             </div>
+                            <div class="button-wrap">
+                                <a href="/auth/microsoft" class="button-inner">
+                                    <i class="fa fa-windows"></i>
+                                </a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
-    
+
     <script src="/js/app.js"></script>
     <script src="/js/core.js"></script>
 </body>

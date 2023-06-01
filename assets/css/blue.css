@@ -17822,7 +17822,7 @@ section:focus {
 
 #backtotop {
     position: fixed;
-    left: 15px;
+    right: 0px;
     opacity: 0;
     visibility: hidden;
     bottom: 25px;

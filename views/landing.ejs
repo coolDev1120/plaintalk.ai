@@ -88,10 +88,23 @@
                         <a class="navbar-item is-slide" href="#services">
                             Services
                         </a>
-                        <!-- Navbar item -->
-                        <a class="navbar-item is-slide" href="/login">
-                            Login
-                        </a>
+                    
+                        <% if (email != "none") { %>
+                            <a class="navbar-item is-slide" href="/account">
+                                Account
+                            </a>
+                        <% } %>
+
+                        <% if (email == "none") { %>
+                            <a class="navbar-item is-slide" href="/login">
+                                Login
+                            </a>
+                        <% } else { %>
+                            <a class="navbar-item is-slide" href="/logout">
+                                Logout 
+                            </a>
+                        <% } %>
+                        
                     </div>
 
                     <!-- Navbar end -->
@@ -130,9 +143,8 @@
                         <br />
                         <!-- Signup form -->
                         <div class="signup-block is-rounded">
-
                             <div class="control">
-                                <a href="/register">
+                                <% if (email == "none") { %> <a href="/register"> <% } else { %>  <a href="/account"> <% } %>
                                     <button type="submit" class="button btn-align primary-btn raised"
                                         style="font-size: 18px; padding: 25px;">
                                         Get start for free
@@ -177,7 +189,7 @@
                 </div>
                 <div class="column is-4">
                     <div class="card-box">
-                        <div class="benifits_des"> Simplify complex terms to improve comprehension. </div>
+                        <div class="benifits_des"> Turn complex ideas into clear messages. </div>
                     </div>
                 </div>
                 <div class="column is-4">
@@ -189,169 +201,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Features section -->
-    <!-- <div class="section is-app-grey is-medium blue-background bg-white" id="bots">
-        <div class="container">
-            <div class="section-title-wrapper has-text-centered white-color">
-                <h2 class="section-title-landing">Simple and Clarify</h2>
-                <h4>Great tools that will make your life easier</h4>
-            </div>
-
-            <div class="content-wrapper">
-                <div class="columns is-vcentered pb-40 pt-40">
-                    <div class="column is-6 is-offset-1" style="margin-left: 0px;">
-                        <div class="icon-subtitle" style="display: flex;">
-                            <img style="width: 80px;" src="https://cdn-icons-png.flaticon.com/512/6056/6056675.png">
-                            <div class="title quick-feature has-numbers text-bold"
-                                style="padding-top: 20px; padding-left: 20px;">
-                                <div>Simple</div>
-                            </div>
-                        </div>
-
-                        <p class="body-text" style="min-height: 70px;  padding-top: 20px;">The bot that explains text to
-                            you like you're five years old</p>
-                    </div>
-                    <div class="column is-6 is-offset-1" style="margin-left: 0px;">
-                        <div class="icon-subtitle" style="display: flex;">
-                            <img src="https://cdn-icons-png.flaticon.com/512/4935/4935511.png" style="width: 80px;">
-                            <div class="title quick-feature has-numbers text-bold"
-                                style="padding-top: 20px; padding-left: 20px;">
-                                <div>Clarify</div>
-                            </div>
-                        </div>
-                        <p class="body-text" style="min-height: 70px;  padding-top: 20px;">The bot that Clarifies
-                            complex
-                            texts into easy-to-understand language!</p>
-                    </div>
-                </div>
-                <div class="has-text-centered is-title-reveal pt-20 pb-20">
-                    <a href="/register" class="button button-cta primary-btn rounded raised">Sign Up For Free</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- Features section -->
-    <!-- <div class="section is-app-grey is-medium blue-background bg-white" id="bots">
-        <div class="container">
-            <div class="section-title-wrapper has-text-centered white-color">
-                <h2 class="section-title-landing">Simple and Clarify</h2>
-                <h4>Great tools that will make your life easier</h4>
-            </div>
-
-            <div class="content-wrapper">
-                <div class="columns is-vcentered pb-40 pt-40">
-                    <div class="column is-4 is-offset-1">
-                        <div class="icon-subtitle"><i style="font-weight:600;" class="im im-icon-Calendar-4"></i></div>
-                        <div class="title quick-feature has-numbers text-bold">
-                            <div>Simple</div>
-                        </div>
-                        <div class="title-divider is-small"></div>
-                        <span class="body-text">Simple- the bot that explains text to
-                            you like you're five years old</span>
-                        <div class="pt-10 pb-10">
-                            <a href="/register" class="button btn-align btn-more is-link color-primary">
-                                Try It For Free<i class="sl sl-icon-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="column is-6 is-offset-1">
-                        <img src="/img/graphics/compositions/Chat bot-pana.svg"
-                            data-base-url="/img/graphics/compositions/drawing-bw-2" data-extension=".svg" alt="" />
-                    </div>
-                </div>
-
-                <div class="columns is-vcentered pb-40 pt-40">
-                    <div class="column is-4 is-offset-1 is-hidden-tablet is-hidden-desktop">
-                        <div class="icon-subtitle"><i style="font-weight:600;" class="im im-icon-Video-2"></i></div>
-                        <div class="title quick-feature has-numbers text-bold">
-                            <h2>Clarify</h2>
-                            <div class="bg-number">+</div>
-                        </div>
-                        <div class="title-divider is-small"></div>
-                        <span class="body-text">Clarify - the bot that Clarifies complex
-                            texts into easy-to-understand language!</span>
-                        <div class="pt-10 pb-10">
-                            <a href="/register" class="button btn-align btn-more is-link color-primary">
-                                Try It For Free<i class="sl sl-icon-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="column is-6">
-                        <img src="/img/graphics/compositions/Chat bot-cuate.svg"
-                            data-base-url="/img/graphics/compositions/drawing-bw-5" data-extension=".svg" alt="" />
-                    </div>
-                    <div class="column is-4 is-offset-1 is-hidden-mobile">
-                        <div class="icon-subtitle"><i style="font-weight:600;" class="im im-icon-Video-2"></i></div>
-                        <div class="title quick-feature has-numbers text-bold">
-                            <h2>Clarify</h2>
-                            <div class="bg-number">+</div>
-                        </div>
-                        <div class="title-divider is-small"></div>
-                        <span class="body-text">Clarify - the bot that simplifies complex texts into easy-to-understand
-                            language!</span>
-                        <div class="pt-10 pb-10">
-                            <a href="/register" class="button btn-align btn-more is-link color-primary">
-                                Try It For Free <i class="sl sl-icon-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="has-text-centered is-title-reveal pt-20 pb-20">
-                    <a href="/register" class="button button-cta primary-btn rounded raised">Sign Up For Free</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <div class="section is-medium" style="padding-top: 0px;">
-        <div class="container">
-            <div class="columns" style="width: 80%; margin: auto;">
-                <div class="column is-4 feature1">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 512 512">
-                            <path class="cls-1"
-                                d="M512,223.18a39.43,39.43,0,0,0-39.38-39.38H342.47C346,159.58,354.22,86,327.92,54.45c-8.34-10-19.29-15.06-32.54-15.06-.46,0-45.95.67-45.95,59.08,0,63.57-18.59,140.37-105.92,150a32.87,32.87,0,0,0-31.93-25.25H32.82A32.86,32.86,0,0,0,0,256V439.79a32.86,32.86,0,0,0,32.82,32.82h78.77a32.87,32.87,0,0,0,32-25.58c32.47,2.35,42.11,10.52,42.12,10.52a6.56,6.56,0,0,0,4.64,1.92H407a39.36,39.36,0,0,0,29.23-65.75,39.36,39.36,0,0,0,26.26-65.64,39.37,39.37,0,0,0,23.93-68A39.45,39.45,0,0,0,512,223.18ZM131.28,439.79a19.71,19.71,0,0,1-19.69,19.69H32.82a19.71,19.71,0,0,1-19.69-19.69V256a19.71,19.71,0,0,1,19.69-19.69h78.77A19.71,19.71,0,0,1,131.28,256ZM472.62,249.44H459.49a6.56,6.56,0,1,0,0,13.13,26.26,26.26,0,0,1,0,52.51H433.23a6.56,6.56,0,1,0,0,13.13,26.26,26.26,0,1,1,0,52.51H407a6.56,6.56,0,0,0,0,13.13,26.26,26.26,0,1,1,0,52.51H192.59c-5-3.46-18.5-10.29-48.18-12.43V261.53C247,250.64,262.56,155.16,262.56,98.46c0-44.23,29.5-45.9,32.82-45.95,9.3,0,16.65,3.38,22.46,10.34,27.12,32.48,10.64,125.4,10.47,126.33a6.57,6.57,0,0,0,6.46,7.74H472.62a26.26,26.26,0,1,1,0,52.51Z" />
-                            <circle class="cls-1" cx="72.21" cy="413.54" r="13.13" />
-                        </svg>
-                    </div>
-                    <div style="font-style: italic;">Simplify complex terms to improve comprehension</div>
-                </div>
-                <div class="column is-4 feature1">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 512 512">
-                            <path class="cls-1"
-                                d="M115.14,301.94a16.23,16.23,0,0,1-11.29-4.56l-99-95.77a15.58,15.58,0,0,1,0-22.51l99-95.76a16.3,16.3,0,0,1,17.72-3.25,15.57,15.57,0,0,1,9.71,14.5v49.82H315.08a26.28,26.28,0,0,1,26.26,26.26v39.38a26.28,26.28,0,0,1-26.26,26.26H131.28v49.82a15.57,15.57,0,0,1-9.71,14.5A16.39,16.39,0,0,1,115.14,301.94Zm0-210a3,3,0,0,0-2.12.88l-99,95.77a2.46,2.46,0,0,0,0,3.63L113,287.94a3.15,3.15,0,0,0,3.47.6,2.58,2.58,0,0,0,1.71-2.41V229.74a6.56,6.56,0,0,1,6.56-6.56H315.08a13.14,13.14,0,0,0,13.13-13.13V170.67a13.14,13.14,0,0,0-13.13-13.13H124.72a6.56,6.56,0,0,1-6.56-6.56V94.59a2.58,2.58,0,0,0-1.71-2.41A3.48,3.48,0,0,0,115.1,91.9Z" />
-                            <path class="cls-1"
-                                d="M396.86,433.22a16.41,16.41,0,0,1-6.43-1.31,15.57,15.57,0,0,1-9.71-14.5V367.59H196.92a26.28,26.28,0,0,1-26.26-26.26V301.95a26.28,26.28,0,0,1,26.26-26.26H380.72V225.87a15.57,15.57,0,0,1,9.71-14.5,16.29,16.29,0,0,1,17.72,3.25l99,95.77h0a15.58,15.58,0,0,1,0,22.5l-99,95.77A16.23,16.23,0,0,1,396.86,433.22ZM196.92,288.82a13.14,13.14,0,0,0-13.13,13.13v39.38a13.14,13.14,0,0,0,13.13,13.13H387.28a6.56,6.56,0,0,1,6.56,6.56v56.38a2.58,2.58,0,0,0,1.71,2.41,3.14,3.14,0,0,0,3.47-.6l99-95.77a2.45,2.45,0,0,0,0-3.62h0l-99-95.77a3.12,3.12,0,0,0-3.47-.6,2.58,2.58,0,0,0-1.71,2.41v56.38a6.56,6.56,0,0,1-6.56,6.56Z" />
-                        </svg>
-                    </div>
-                    <div style="font-style: italic;">Turn complex ideas into clear messages</div>
-                </div>
-                <div class="column is-4 feature1">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 512 512">
-                            <path class="cls-1"
-                                d="M275.69,98.46a6.56,6.56,0,0,0-6.56-6.56H85.33a6.56,6.56,0,0,0,0,13.13H269.13A6.56,6.56,0,0,0,275.69,98.46Z" />
-                            <path class="cls-1"
-                                d="M164.1,144.41H85.33a6.56,6.56,0,0,0,0,13.13H164.1a6.56,6.56,0,1,0,0-13.13Z" />
-                            <path class="cls-1"
-                                d="M426.67,301.95H242.87a6.56,6.56,0,0,0,0,13.13H426.67a6.56,6.56,0,0,0,0-13.13Z" />
-                            <path class="cls-1"
-                                d="M439.79,210H346.56a71.75,71.75,0,0,0,7.9-32.82v-105A72.29,72.29,0,0,0,282.26,0h-210A72.29,72.29,0,0,0,0,72.21v105a72.43,72.43,0,0,0,52.51,69.48v48.67A6.57,6.57,0,0,0,63.72,300l50.59-50.59h51.13a71.78,71.78,0,0,0-7.9,32.82v105a72.29,72.29,0,0,0,72.2,72.21h168l50.59,50.59a6.57,6.57,0,0,0,11.21-4.64V456.76A72.43,72.43,0,0,0,512,387.28v-105A72.29,72.29,0,0,0,439.79,210Zm-328.2,26.26a6.56,6.56,0,0,0-4.64,1.92L65.64,279.54v-38a6.56,6.56,0,0,0-5.26-6.43,59.23,59.23,0,0,1-47.25-57.89v-105A59.14,59.14,0,0,1,72.21,13.13h210a59.14,59.14,0,0,1,59.07,59.08v105a58.71,58.71,0,0,1-10,32.82,59.54,59.54,0,0,1-12,13.13,58.77,58.77,0,0,1-37.08,13.13H111.59Zm387.28,151a59.22,59.22,0,0,1-47.25,57.89,6.57,6.57,0,0,0-5.26,6.44v38L405,448.28a6.56,6.56,0,0,0-4.64-1.92H229.74a59.14,59.14,0,0,1-59.07-59.08v-105a58.71,58.71,0,0,1,10-32.82H282.26a72.07,72.07,0,0,0,55.65-26.26H439.79a59.14,59.14,0,0,1,59.08,59.08Z" />
-                            <path class="cls-1"
-                                d="M321.64,354.46H242.87a6.56,6.56,0,1,0,0,13.13h78.77a6.56,6.56,0,1,0,0-13.13Z" />
-                        </svg>
-                    </div>
-                    <div style="font-style: italic;">Improved your understanding through clear and effective
-                        communication</div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <div class="section is-medium feature_gradient" id="services">
         <div class="container">
@@ -482,94 +331,6 @@
         </div>
     </div>
 
-
-    <!-- Services -->
-    <!-- <div class="section is-medium" id="services">
-        <div class="container">
-            <div class="section-title-wrapper has-text-centered">
-                <div class="bg-number">2</div>
-                <h2 class="section-title-landing">Feature</h2>
-                <h4>Don't waste your time anymore</h4>
-            </div>
-
-            <div class="content-wrapper hover-cards">
-                <div class="columns is-vcentered">
-                    <div class="column is-10 is-offset-1">
-                        <div class="columns is-vcentered">
-                            <div class="column is-6">
-                                <div class="flex-card icon-card-hover first-card light-bordered shadows">
-                                    <h3 class="card-title is-clean">Save Time</h3>
-                                    <p class="card-description">
-                                        Save time simplifying complex sentences with PlainTalk.
-                                    </p>
-                                </div>
-                                <div class="flex-card icon-card-hover second-card light-bordered shadows">
-                                    <h3 class="card-title is-clean">Latest Technology</h3>
-                                    <p class="card-description">
-                                        Experience lightning-fast responses and unparalleled accuracy with PlainTalk
-                                        powered by GPT-3.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="flex-card icon-card-hover third-card light-bordered shadows">
-                                    <h3 class="card-title is-clean">User-Friendly Interface</h3>
-                                    <p class="card-description">
-                                        Our user-friendly interface makes it easy to simplify complex sentences into
-                                        plain language.
-                                    </p>
-                                </div>
-                                <div class="flex-card icon-card-hover fourth-card light-bordered shadows">
-                                    <h3 class="card-title is-clean">10X Productivity</h3>
-                                    <p class="card-description">
-                                        Boost productivity with PlainTalk – simplify complex sentences in a fraction of
-                                        the time.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="button-wrap has-text-centered is-title-reveal">
-                    <a href="/register" class="
-                button button-cta
-                is-rounded
-                btn-align
-                raised
-                primary-btn
-                raised
-              ">
-                        Sign Up For Free
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- Parallax Icon counter -->
-    <!-- <div class="section">
-        <div class="container">
-            <div class="section-title-wrapper has-text-centered">
-                <h2 class="section-title-landing">Features</h2>
-                <h4>PlainTalk analyzes your text and converts complex sentences into plain language that everyone can
-                    understand. You can upload your text by copy-pasting it and select the "Standard" or "Elementary"
-                    option, depending on the understandability format. Our algorithm then generates a revised version of
-                    your text that is easier to read and understand.</h4>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <div class="section">
-        <div class="container">
-            <div class="section-title-wrapper has-text-centered">
-                <h2 class="section-title-landing">How it works</h2>
-                <h4>Using PlainTalk is as easy as 1-2-3. Sign up, upload your text, and choose the different mode
-                    "Standard" or "Elementary" option. Our algorithm will simplify your text and generate a plain
-                    language version that you can read of your choice.</h4>
-            </div>
-        </div>
-    </div> -->
-
     <!-- Process section -->
     <div class="section is-app-grey is-medium bg-image1">
         <div class="container">
@@ -640,12 +401,6 @@
             <!-- Pricing tables -->
             <h1 class="title main-title has-text-centered"
                 style="color: #fff; font-weight: normal; font-size: 50px; padding-bottom: 45px; position:relative;">
-                <!-- <svg style="z-index: -10; height: 0.58em; width: 100%; top: 35.666667%; left: 0; fill: rgb(15, 124, 255,.7);  position: absolute;"
-                    viewBox="0 0 418 42" class="absolute top-2/3 left-0 h-[0.58em] w-full fill-purple-300/70">
-                    <path
-                        d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z">
-                    </path>
-                </svg> -->
                 <svg style="z-index: -10; height: 0.58em; width: 100%; top: 35.666667%; left: 0; fill: rgb(15, 124, 255,.7);  position: absolute;"
                     class="absolute top-1/2 left-0 h-[1em] w-full fill-purple-400" viewBox="0 0 281 40">
                     <path
@@ -823,6 +578,9 @@
                                 </div>
                             </div>
                         </div>
+                        <p style="text-align: center; color: #fff; font-size: 18px;">If you happen to go over your
+                            words, don't worry - we'll only charge you approximately $.25 per 300 words,
+                            and this charge will be clearly visible on your following billing statement.</p>
                     </div>
                 </div>
             </div>
@@ -1006,7 +764,7 @@
                     </div>
                     <div class="head-action">
                         <div class="buttons">
-                            <a href="/register" class="button primary-btn raised action-button is-bold">Try it free</a>
+                            <a <% if (email == "none") { %> href="/register" <% } else { %>  href="/account" <% } %> class="button primary-btn raised action-button is-bold">Try it free</a>
                             <a href="/login" class="button chat-button">Log In</a>
                         </div>
                     </div>
@@ -1056,14 +814,6 @@
     <script src="/js/app.js"></script>
     <script src="/js/core.js"></script>
     <script src="/js/min.js"></script>
-
-    <link rel='stylesheet' href='https://bots.kore.ai/webclient/UI/dist/kore-ai-sdk.min.css'>
-    <script
-        src='https://bots.kore.ai/api/platform/websdkjs/331ecd5c627241f6b1c37f158af5dd95c4d7e9c048f14852a514d5bfb3a5ffc4std1'>
-    </script>
-    <script>
-        KoreSDK.show(KoreSDK.chatConfig);
-    </script>
 </body>
 
 </html>

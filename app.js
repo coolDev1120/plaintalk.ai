@@ -2,6 +2,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 require("dotenv").config();
 require("./src/connect/mongodb");
+const nodemailer = require("nodemailer");
 const path = require("path");
 const bodyParser = require("body-parser");
 const express = require("express");
@@ -164,7 +165,14 @@ const productToPriceMap = {
 };
 
 app.get("/", (req, res) => {
-  res.render("landing.ejs");
+  var email = ''
+  if (req.session.email) {
+    email = req.session.email
+  }
+  else {
+    email = 'none'
+  }
+  res.render("landing.ejs", { 'email': email });
 });
 
 app.get(
@@ -267,7 +275,7 @@ app.get("/account", async function (req, res) {
 });
 
 app.post("/removehisttory", hasCredits(0), async (req, res) => {
-  questionModel.deleteMany({ mainID: 1 }, function(err) {
+  questionModel.deleteMany({ mainID: 1 }, function (err) {
     if (err) {
       // Handle error here
     } else {
@@ -311,6 +319,7 @@ app.post("/register", async function (req, res) {
   }
 });
 
+
 app.post(
   "/login",
   passport.authenticate("local", {
@@ -341,6 +350,44 @@ app.post(
     res.redirect("/account");
   }
 );
+
+app.post("/emailverification", async (req, res) => {
+  const mailOptions = {
+    from: {
+      name: 'Plaintalk',
+      address: 'support@plaintalk.ai',
+    },
+    to: 'astjin2@gmail.com',
+    subject: 'Email verification',
+    // inReplyTo: req.body.inReplyTo,
+    // references: req.body.inReplyTo,
+    html: 'Email verification code',
+  };
+
+  console.log(mailOptions);
+
+  const transporter = nodemailer.createTransport({
+    name: "thehempcoop.org",
+    host: "plaintalk.ai",
+    port: "465",
+    secure: true, // use TLS
+    auth: {
+      user: "support@plaintalk.ai",
+      pass: "@izLr;[x5sW^",
+    },
+  });
+
+  transporter.sendMail(mailOptions, async function (error, info) {
+    if (error) {
+      console.log(error);
+      res.send({ flag: error })
+      return;
+    } else {
+      console.log('success')
+      res.send({ flag: 'success' })
+    }
+  });
+});
 
 app.post("/checkout", setCurrentUser, async (req, res) => {
   const customer = req.user;
@@ -557,6 +604,26 @@ app.post("/simplytext", hasCredits(0), async (req, res) => {
 
     res.send({ message: data.data.choices[0].text });
   });
+});
+
+app.post("/generateAnswer", async (req, res) => {
+  try {
+    const response = openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `${req.body.prompt}`,
+      temperature: 0.2,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0.6,
+      max_tokens: 3000,
+    });
+
+    response.then(async (data) => {
+      res.send({ message: data.data.choices[0].text });
+    });
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 app.post("/clarifytext", hasCredits(0), async (req, res) => {
